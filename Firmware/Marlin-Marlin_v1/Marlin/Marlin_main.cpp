@@ -311,7 +311,9 @@ void setup()
   setup_killpin(); 
   setup_powerhold();
   
-  SET_OUTPUT(SPINDLE_CONTROL_PIN);
+  pinMode(SPINDLE_CONTROL_PIN, OUTPUT);
+  
+  //SET_OUTPUT(SPINDLE_CONTROL_PIN);
   digitalWrite(SPINDLE_CONTROL_PIN,0);
   
   MYSERIAL.begin(BAUDRATE);
@@ -872,11 +874,11 @@ void process_commands()
     case 3:
     case 4:
         st_synchronize();
-        digitalWrite(SPINDLE_CONTROL_PIN,1); 
+        digitalWrite(SPINDLE_CONTROL_PIN,HIGH); 
         break;
     case 5:
         st_synchronize();
-        digitalWrite(SPINDLE_CONTROL_PIN,0); 
+        digitalWrite(SPINDLE_CONTROL_PIN,LOW); 
         break;
         
         
